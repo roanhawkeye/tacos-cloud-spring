@@ -12,12 +12,19 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.extern.slf4j.Slf4j;
 import sia.tacocloud.TacoOrder;
+import sia.tacocloud.data.OrderRepository;
 
 @Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
+
+  private OrderRepository orderRepository;
+
+  public OrderController(OrderRepository orderRepository){
+    this.orderRepository = orderRepository;
+  }
   
   @GetMapping("/current")
   public String orderForm(){
@@ -31,6 +38,7 @@ public class OrderController {
     }
     
     log.info("Order Submitted: {}", order);
+    orderRepository.save(order);
     sessionStatus.setComplete();
 
     return "redirect:/";
