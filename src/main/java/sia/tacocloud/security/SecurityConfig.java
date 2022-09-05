@@ -2,7 +2,6 @@ package sia.tacocloud.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,7 +13,6 @@ import sia.tacocloud.User;
 import sia.tacocloud.data.UserRepository;
 
 @Configuration
-@EnableGlobalMethodSecurity
 public class SecurityConfig {
   
   @Bean
